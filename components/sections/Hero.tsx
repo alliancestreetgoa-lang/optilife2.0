@@ -8,9 +8,9 @@ const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 // Floating product showcase — background-removed cutouts (bigger on mobile).
 const heroProducts = [
-  { src: `${BP}/products/turmeric.png?v=5`, alt: 'Turmeric 400mg', cls: 'w-[42%] lg:w-[24%] -rotate-[8deg] z-10', dur: 4.2, delay: 0.3 },
-  { src: `${BP}/products/multivitamin.png?v=5`, alt: 'Multivitamin & Minerals', cls: 'w-[50%] lg:w-[32%] z-20', dur: 5, delay: 0 },
-  { src: `${BP}/products/ashwagandha.png?v=5`, alt: 'Ashwagandha 1300mg', cls: 'w-[42%] lg:w-[24%] rotate-[8deg] z-10', dur: 4.6, delay: 0.5 },
+  { src: `${BP}/products/turmeric.png?v=5`, alt: 'Turmeric 400mg', cls: 'w-[42%] lg:w-[34%] -rotate-[8deg] z-10', dur: 4.2, delay: 0.3 },
+  { src: `${BP}/products/multivitamin.png?v=5`, alt: 'Multivitamin & Minerals', cls: 'w-[50%] lg:w-[46%] z-20 lg:-mb-6', dur: 5, delay: 0 },
+  { src: `${BP}/products/ashwagandha.png?v=5`, alt: 'Ashwagandha 1300mg', cls: 'w-[42%] lg:w-[34%] rotate-[8deg] z-10', dur: 4.6, delay: 0.5 },
 ]
 
 export function Hero() {
@@ -23,7 +23,7 @@ export function Hero() {
         transition={{ duration: 1, delay: 0.3 }}
         className="absolute z-[5] pointer-events-none flex items-end justify-center
           inset-x-0 bottom-[3%] h-[48%]
-          lg:inset-x-auto lg:bottom-auto lg:right-[3%] lg:top-1/2 lg:h-auto lg:w-[44%] lg:-translate-y-1/2"
+          lg:inset-x-auto lg:bottom-auto lg:right-[2%] lg:top-1/2 lg:h-auto lg:w-[50%] lg:-translate-y-1/2"
         aria-hidden="true"
       >
         {/* soft glow behind the bottles */}
