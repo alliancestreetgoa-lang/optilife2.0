@@ -8,9 +8,9 @@ const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 // Floating product showcase — our actual supplements (on-brand hero visual).
 const heroProducts = [
-  { src: `${BP}/products/turmeric.png`, alt: 'Turmeric 400mg', cls: 'w-[24%] -rotate-[8deg] z-10', dur: 4.2, delay: 0.3 },
-  { src: `${BP}/products/multivitamin.png`, alt: 'Multivitamin & Minerals', cls: 'w-[32%] z-20 -mb-2', dur: 5, delay: 0 },
-  { src: `${BP}/products/ashwagandha.png`, alt: 'Ashwagandha 1300mg', cls: 'w-[24%] rotate-[8deg] z-10', dur: 4.6, delay: 0.5 },
+  { src: `${BP}/products/turmeric.png?v=2`, alt: 'Turmeric 400mg', cls: 'w-[24%] -rotate-[8deg] z-10', dur: 4.2, delay: 0.3 },
+  { src: `${BP}/products/multivitamin.png?v=2`, alt: 'Multivitamin & Minerals', cls: 'w-[32%] z-20 -mb-2', dur: 5, delay: 0 },
+  { src: `${BP}/products/ashwagandha.png?v=2`, alt: 'Ashwagandha 1300mg', cls: 'w-[24%] rotate-[8deg] z-10', dur: 4.6, delay: 0.5 },
 ]
 
 export function Hero() {

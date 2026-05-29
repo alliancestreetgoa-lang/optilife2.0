@@ -24,7 +24,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="relative h-72 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(255,255,255,0.92),rgba(255,255,255,0)_68%)]" />
         <Image
-          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${product.image}`}
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${product.image}?v=2`}
           alt={product.name}
           fill
           sizes="(max-width: 768px) 100vw, 25vw"
