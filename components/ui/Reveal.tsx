@@ -38,7 +38,7 @@ export function Reveal({ children, delay = 0, variant = 'up', className }: Revea
     hidden: reduce ? { opacity: 0 } : v.hidden,
     show: {
       ...v.show,
-      transition: { duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
     },
   }
 

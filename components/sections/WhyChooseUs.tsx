@@ -52,10 +52,10 @@ export function WhyChooseUs() {
           {features.map((feature, i) => (
             <motion.div
               key={feature.title}
-              initial={{ opacity: 0, rotateY: -55, transformPerspective: 900 }}
+              initial={{ opacity: 0, rotateY: -42, transformPerspective: 900 }}
               whileInView={{ opacity: 1, rotateY: 0, transformPerspective: 900 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.6, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
             >
               <Tilt max={12} scale={1.04} className="glass-card rounded-2xl p-8 text-center h-full">
                 <div className="w-20 h-20 mx-auto mb-3 flex items-center justify-center">

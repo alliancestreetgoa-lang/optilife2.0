@@ -49,7 +49,7 @@ export function Testimonials() {
               initial={{ opacity: 0, scale: 0.78 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: i * 0.14, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.55, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
             >
               <Tilt max={8} scale={1.02} className="glass-card rounded-2xl p-8 h-full">
                 <div className="flex gap-1 mb-5">
