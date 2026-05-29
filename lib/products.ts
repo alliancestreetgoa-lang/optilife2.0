@@ -19,7 +19,7 @@ export const products: Product[] = [
     price: 28.99,
     rating: 4.9,
     badge: 'BESTSELLER',
-    image: '/products/multivitamin.jpg',
+    image: '/products/multivitamin.png',
   },
   {
     id: '2',
@@ -28,7 +28,7 @@ export const products: Product[] = [
     description: 'High-strength Rosehip extract for joint health and natural Vitamin C support.',
     price: 26.99,
     rating: 4.9,
-    image: '/products/rosehip.jpg',
+    image: '/products/rosehip.png',
   },
   {
     id: '3',
@@ -37,7 +37,7 @@ export const products: Product[] = [
     description: 'Powerful antioxidant and anti-inflammatory support with Curcumin.',
     price: 28.99,
     rating: 4.9,
-    image: '/products/turmeric.jpg',
+    image: '/products/turmeric.png',
   },
   {
     id: '4',
@@ -47,7 +47,7 @@ export const products: Product[] = [
     price: 29.99,
     rating: 4.9,
     badge: 'TRENDING',
-    image: '/products/ashwagandha.jpg',
+    image: '/products/ashwagandha.png',
   },
 ]
 

@@ -19,15 +19,14 @@ export function ProductCard({ product }: { product: Product }) {
         </span>
       )}
 
-      {/* Product photo — white-background studio shot on a solid white panel,
-          so the white bottle reads as a clean, solid product (no transparency). */}
-      <div className="relative h-72 overflow-hidden bg-white">
+      {/* Product cutout (background removed) floating on the glass card */}
+      <div className="relative h-72 overflow-hidden">
         <Image
-          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${product.image}?v=3`}
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${product.image}?v=5`}
           alt={product.name}
           fill
           sizes="(max-width: 768px) 100vw, 25vw"
-          className="object-contain p-2 transition-transform duration-500 ease-out group-hover:scale-105"
+          className="object-contain p-4 drop-shadow-[0_16px_28px_rgba(28,28,26,0.22)] transition-transform duration-500 ease-out group-hover:scale-105"
         />
       </div>
 

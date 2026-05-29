@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/Button'
 
 const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
-// Floating product showcase — real supplements on clean white cards (solid bottles).
+// Floating product showcase — background-removed cutouts (bigger on mobile).
 const heroProducts = [
-  { src: `${BP}/products/turmeric.jpg?v=3`, alt: 'Turmeric 400mg', cls: 'w-[27%] -rotate-[7deg] z-10', dur: 4.2, delay: 0.3 },
-  { src: `${BP}/products/multivitamin.jpg?v=3`, alt: 'Multivitamin & Minerals', cls: 'w-[34%] z-20 -mb-4', dur: 5, delay: 0 },
-  { src: `${BP}/products/ashwagandha.jpg?v=3`, alt: 'Ashwagandha 1300mg', cls: 'w-[27%] rotate-[7deg] z-10', dur: 4.6, delay: 0.5 },
+  { src: `${BP}/products/turmeric.png?v=5`, alt: 'Turmeric 400mg', cls: 'w-[42%] lg:w-[24%] -rotate-[8deg] z-10', dur: 4.2, delay: 0.3 },
+  { src: `${BP}/products/multivitamin.png?v=5`, alt: 'Multivitamin & Minerals', cls: 'w-[50%] lg:w-[32%] z-20', dur: 5, delay: 0 },
+  { src: `${BP}/products/ashwagandha.png?v=5`, alt: 'Ashwagandha 1300mg', cls: 'w-[42%] lg:w-[24%] rotate-[8deg] z-10', dur: 4.6, delay: 0.5 },
 ]
 
 export function Hero() {
@@ -22,25 +22,25 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.3 }}
         className="absolute z-[5] pointer-events-none flex items-end justify-center
-          inset-x-0 bottom-0 h-[34%] opacity-90 [mask-image:linear-gradient(to_bottom,transparent,#000_38%)]
-          lg:inset-x-auto lg:bottom-auto lg:right-[3%] lg:top-1/2 lg:h-auto lg:w-[44%] lg:-translate-y-1/2 lg:opacity-100 lg:[mask-image:none]"
+          inset-x-0 bottom-[3%] h-[48%]
+          lg:inset-x-auto lg:bottom-auto lg:right-[3%] lg:top-1/2 lg:h-auto lg:w-[44%] lg:-translate-y-1/2"
         aria-hidden="true"
       >
-        {/* soft glow behind the cards */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(58,125,60,0.18),transparent_65%)]" />
+        {/* soft glow behind the bottles */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(58,125,60,0.16),transparent_62%)]" />
         {heroProducts.map((p) => (
           <motion.div
             key={p.alt}
             animate={{ y: [0, -14, 0] }}
             transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: 'easeInOut' }}
-            className={`relative aspect-[3/4] overflow-hidden rounded-2xl bg-white shadow-[0_20px_40px_-12px_rgba(28,28,26,0.3)] ring-1 ring-black/5 ${p.cls}`}
+            className={`relative ${p.cls}`}
           >
             <Image
               src={p.src}
               alt={p.alt}
-              fill
-              sizes="200px"
-              className="object-contain p-1"
+              width={400}
+              height={533}
+              className="w-full h-auto drop-shadow-[0_22px_34px_rgba(28,28,26,0.32)]"
             />
           </motion.div>
         ))}
