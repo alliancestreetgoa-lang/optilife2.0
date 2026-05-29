@@ -1,49 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { Button } from '@/components/ui/Button'
-
-const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
-
-// Real product photos (your exact design), background removed, floating.
-const heroProducts = [
-  { src: `${BP}/products/turmeric.png?v=5`, alt: 'Turmeric 400mg', cls: 'w-[42%] lg:w-[34%] -rotate-[8deg] z-10', dur: 4.2, delay: 0.3 },
-  { src: `${BP}/products/multivitamin.png?v=5`, alt: 'Multivitamin & Minerals', cls: 'w-[50%] lg:w-[46%] z-20 lg:-mb-6', dur: 5, delay: 0 },
-  { src: `${BP}/products/ashwagandha.png?v=5`, alt: 'Ashwagandha 1300mg', cls: 'w-[42%] lg:w-[34%] rotate-[8deg] z-10', dur: 4.6, delay: 0.5 },
-]
 
 export function Hero() {
   return (
     <section className="relative min-h-[100svh] flex items-start lg:items-center overflow-hidden">
-      {/* Floating product photos — lower band on mobile, right side on desktop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.3 }}
-        className="absolute z-[5] pointer-events-none flex items-end justify-center
-          inset-x-0 bottom-[3%] h-[48%]
-          lg:inset-x-auto lg:bottom-auto lg:right-[2%] lg:top-1/2 lg:h-auto lg:w-[50%] lg:-translate-y-1/2"
-        aria-hidden="true"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(58,125,60,0.16),transparent_62%)]" />
-        {heroProducts.map((p) => (
-          <motion.div
-            key={p.alt}
-            animate={{ y: [0, -14, 0] }}
-            transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: 'easeInOut' }}
-            className={`relative ${p.cls}`}
-          >
-            <Image
-              src={p.src}
-              alt={p.alt}
-              width={400}
-              height={533}
-              className="w-full h-auto drop-shadow-[0_22px_34px_rgba(28,28,26,0.32)]"
-            />
-          </motion.div>
-        ))}
-      </motion.div>
 
       <div className="container relative z-10 pt-28 lg:pt-20">
         <div className="max-w-2xl">
