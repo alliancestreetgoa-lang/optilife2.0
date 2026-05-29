@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/Button'
 
 const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
-// Floating product showcase — our actual supplements (on-brand hero visual).
+// Floating product showcase — real supplements on clean white cards (solid bottles).
 const heroProducts = [
-  { src: `${BP}/products/turmeric.png?v=2`, alt: 'Turmeric 400mg', cls: 'w-[24%] -rotate-[8deg] z-10', dur: 4.2, delay: 0.3 },
-  { src: `${BP}/products/multivitamin.png?v=2`, alt: 'Multivitamin & Minerals', cls: 'w-[32%] z-20 -mb-2', dur: 5, delay: 0 },
-  { src: `${BP}/products/ashwagandha.png?v=2`, alt: 'Ashwagandha 1300mg', cls: 'w-[24%] rotate-[8deg] z-10', dur: 4.6, delay: 0.5 },
+  { src: `${BP}/products/turmeric.jpg?v=3`, alt: 'Turmeric 400mg', cls: 'w-[27%] -rotate-[7deg] z-10', dur: 4.2, delay: 0.3 },
+  { src: `${BP}/products/multivitamin.jpg?v=3`, alt: 'Multivitamin & Minerals', cls: 'w-[34%] z-20 -mb-4', dur: 5, delay: 0 },
+  { src: `${BP}/products/ashwagandha.jpg?v=3`, alt: 'Ashwagandha 1300mg', cls: 'w-[27%] rotate-[7deg] z-10', dur: 4.6, delay: 0.5 },
 ]
 
 export function Hero() {
@@ -26,21 +26,21 @@ export function Hero() {
           lg:inset-x-auto lg:bottom-auto lg:right-[3%] lg:top-1/2 lg:h-auto lg:w-[44%] lg:-translate-y-1/2 lg:opacity-100 lg:[mask-image:none]"
         aria-hidden="true"
       >
-        {/* soft glow behind the bottles */}
+        {/* soft glow behind the cards */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(58,125,60,0.18),transparent_65%)]" />
         {heroProducts.map((p) => (
           <motion.div
             key={p.alt}
             animate={{ y: [0, -14, 0] }}
             transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: 'easeInOut' }}
-            className={`relative ${p.cls}`}
+            className={`relative aspect-[3/4] overflow-hidden rounded-2xl bg-white shadow-[0_20px_40px_-12px_rgba(28,28,26,0.3)] ring-1 ring-black/5 ${p.cls}`}
           >
             <Image
               src={p.src}
               alt={p.alt}
-              width={400}
-              height={533}
-              className="w-full h-auto drop-shadow-[0_20px_30px_rgba(28,28,26,0.25)]"
+              fill
+              sizes="200px"
+              className="object-contain p-1"
             />
           </motion.div>
         ))}
