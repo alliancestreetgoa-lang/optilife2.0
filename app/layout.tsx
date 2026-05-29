@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { DM_Serif_Display, Inter } from 'next/font/google'
 import './globals.css'
+import { Header } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
 
 const dmSerif = DM_Serif_Display({
   subsets: ['latin'],
@@ -33,7 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSerif.variable} ${inter.variable}`}>
       <body>
-        {children}
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )
