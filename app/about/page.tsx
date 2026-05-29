@@ -11,11 +11,11 @@ export default function AboutPage() {
         subtitle="Dedicated to improving lives through nature, science, and a commitment to excellence."
       />
 
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="container max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 50, scale: 0.94 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="mb-16"
@@ -57,11 +57,11 @@ export default function AboutPage() {
             ].map((item, i) => (
               <motion.div
                 key={item.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 44, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="bg-cream rounded-2xl p-8 border border-cream-dark"
+                transition={{ duration: 0.7, delay: i * 0.16, ease: [0.22, 1, 0.36, 1] }}
+                className="glass-card rounded-2xl p-8"
               >
                 <span className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-gold block mb-4">
                   {item.label}

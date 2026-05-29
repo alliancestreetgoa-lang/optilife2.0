@@ -1,21 +1,36 @@
 'use client'
 
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'outline' | 'ghost'
+// Omit the handlers whose signatures collide with Framer Motion's gesture props.
+interface ButtonProps
+  extends Omit<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    'onAnimationStart' | 'onDrag' | 'onDragStart' | 'onDragEnd'
+  > {
+  variant?: 'primary' | 'outline' | 'outlineLight' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   href?: string
 }
 
+const MotionLink = motion.create(Link)
+
+// Spring-based hover/tap shared by both the link and button variants.
+const motionProps = {
+  whileHover: { scale: 1.03 },
+  whileTap: { scale: 0.96 },
+  transition: { type: 'spring' as const, stiffness: 400, damping: 17 },
+}
+
 const baseClass =
-  'inline-flex items-center justify-center font-sans font-medium tracking-wide transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 disabled:opacity-50 cursor-pointer'
+  'inline-flex items-center justify-center font-sans font-medium tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 disabled:opacity-50 cursor-pointer'
 
 const variants = {
-  primary: 'bg-green text-white hover:bg-green-dark active:scale-[0.97]',
-  outline:
-    'border-2 border-green text-green hover:bg-green hover:text-white active:scale-[0.97]',
+  primary: 'glass-btn bg-gold/80 text-white hover:bg-gold',
+  outline: 'glass-btn bg-white/30 text-green hover:bg-white/50',
+  outlineLight: 'glass-btn bg-white/10 text-white hover:bg-white/25',
   ghost: 'text-green hover:underline underline-offset-4',
 }
 
@@ -36,14 +51,14 @@ export function Button({
   const classes = cn(baseClass, variants[variant], sizes[size], className)
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <MotionLink href={href} className={classes} {...motionProps}>
         {children}
-      </Link>
+      </MotionLink>
     )
   }
   return (
-    <button className={classes} {...props}>
+    <motion.button className={classes} {...motionProps} {...props}>
       {children}
-    </button>
+    </motion.button>
   )
 }

@@ -1,7 +1,5 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import { PageHero } from '@/components/sections/PageHero'
+import { Reveal } from '@/components/ui/Reveal'
 import { Target, FlaskConical, Heart, Zap, MessageCircle } from 'lucide-react'
 
 const objectives = [
@@ -40,26 +38,21 @@ export default function ObjectivesPage() {
         subtitle="Guiding principles that drive our commitment to your health."
       />
 
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="container max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {objectives.map((obj, i) => {
               const Icon = obj.icon
               return (
-                <motion.div
-                  key={obj.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="bg-cream rounded-2xl p-8 border border-cream-dark"
-                >
-                  <div className="w-12 h-12 bg-green/10 rounded-xl flex items-center justify-center mb-5">
-                    <Icon className="w-5 h-5 text-green" />
+                <Reveal key={obj.title} variant="flip" delay={i * 0.1} className="h-full">
+                  <div className="glass-card rounded-2xl p-8 h-full">
+                    <div className="w-12 h-12 bg-green/10 rounded-xl flex items-center justify-center mb-5">
+                      <Icon className="w-5 h-5 text-green" />
+                    </div>
+                    <h3 className="font-serif text-2xl text-ink mb-3">{obj.title}</h3>
+                    <p className="font-sans text-sm text-ink/60 leading-relaxed">{obj.description}</p>
                   </div>
-                  <h3 className="font-serif text-2xl text-ink mb-3">{obj.title}</h3>
-                  <p className="font-sans text-sm text-ink/60 leading-relaxed">{obj.description}</p>
-                </motion.div>
+                </Reveal>
               )
             })}
           </div>

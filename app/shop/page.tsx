@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { PageHero } from '@/components/sections/PageHero'
 import { ProductCard } from '@/components/ui/ProductCard'
+import { Reveal } from '@/components/ui/Reveal'
 import { products } from '@/lib/products'
 
 export const metadata: Metadata = {
@@ -25,22 +26,24 @@ export default function ShopPage() {
         dark
       />
 
-      <section className="py-20 bg-cream">
+      <section className="py-20">
         <div className="container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {products.map((product, i) => (
+              <Reveal key={product.id} variant="zoom" delay={(i % 4) * 0.08}>
+                <ProductCard product={product} />
+              </Reveal>
             ))}
           </div>
 
           <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-cream-dark pt-16">
-            {trustBadges.map((badge) => (
-              <div key={badge.title} className="text-center">
+            {trustBadges.map((badge, i) => (
+              <Reveal key={badge.title} delay={i * 0.1} className="text-center">
                 <h4 className="font-serif text-2xl text-ink mb-2">
                   {badge.title}
                 </h4>
                 <p className="font-sans text-sm text-ink/60">{badge.sub}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

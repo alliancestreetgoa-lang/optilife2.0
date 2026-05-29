@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
+import { Tilt } from '@/components/effects/Tilt'
 
 const testimonials = [
   {
@@ -26,7 +27,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="py-24 bg-cream">
+    <section className="py-24">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,8 +36,8 @@ export function Testimonials() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="font-serif text-5xl md:text-6xl text-ink mb-4">
-            What Our Customers Say
+          <h2 className="font-serif text-5xl md:text-6xl text-green mb-4">
+            Stories from Our Community
           </h2>
           <div className="w-16 h-0.5 bg-gold mx-auto" />
         </motion.div>
@@ -45,31 +46,30 @@ export function Testimonials() {
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.78 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="bg-white rounded-2xl p-8 shadow-sm border border-cream-dark"
+              transition={{ duration: 0.6, delay: i * 0.14, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="flex gap-1 mb-5">
-                {[...Array(5)].map((_, j) => (
-                  <Star key={j} className="w-4 h-4 fill-gold text-gold" />
-                ))}
-              </div>
-              <p className="font-sans text-ink/70 leading-relaxed mb-6 italic">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center font-serif text-green font-bold">
-                  {t.name[0]}
+              <Tilt max={8} scale={1.02} className="glass-card rounded-2xl p-8 h-full">
+                <div className="flex gap-1 mb-5">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="w-4 h-4 fill-gold text-gold" />
+                  ))}
                 </div>
-                <div>
-                  <p className="font-sans text-sm font-semibold text-ink">
-                    {t.name}
-                  </p>
-                  <p className="font-sans text-xs text-ink/50">{t.label}</p>
+                <p className="font-sans text-ink/70 leading-relaxed mb-6 italic">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center font-serif text-green font-bold">
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <p className="font-sans text-sm font-semibold text-ink">{t.name}</p>
+                    <p className="font-sans text-xs text-ink/50">{t.label}</p>
+                  </div>
                 </div>
-              </div>
+              </Tilt>
             </motion.div>
           ))}
         </div>

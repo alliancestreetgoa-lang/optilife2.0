@@ -1,7 +1,5 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import { PageHero } from '@/components/sections/PageHero'
+import { Reveal } from '@/components/ui/Reveal'
 import { Users, Stethoscope, Shield, Sprout } from 'lucide-react'
 
 const areas = [
@@ -35,28 +33,28 @@ export default function ExpertisePage() {
         subtitle="Decades of experience in nutritional science and holistic wellness."
       />
 
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="container max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {areas.map((area, i) => {
               const Icon = area.icon
               return (
-                <motion.div
+                <Reveal
                   key={area.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="flex gap-6 p-8 bg-cream rounded-2xl border border-cream-dark"
+                  variant={i % 2 === 0 ? 'left' : 'right'}
+                  delay={Math.floor(i / 2) * 0.12}
+                  className="h-full"
                 >
-                  <div className="w-12 h-12 bg-green/10 rounded-xl flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-green" />
+                  <div className="glass-card flex gap-6 p-8 rounded-2xl h-full">
+                    <div className="w-12 h-12 bg-green/10 rounded-xl flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 text-green" />
+                    </div>
+                    <div>
+                      <h3 className="font-serif text-2xl text-ink mb-3">{area.title}</h3>
+                      <p className="font-sans text-sm text-ink/60 leading-relaxed">{area.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-serif text-2xl text-ink mb-3">{area.title}</h3>
-                    <p className="font-sans text-sm text-ink/60 leading-relaxed">{area.description}</p>
-                  </div>
-                </motion.div>
+                </Reveal>
               )
             })}
           </div>

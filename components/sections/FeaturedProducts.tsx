@@ -8,7 +8,7 @@ import { ProductCard } from '@/components/ui/ProductCard'
 
 export function FeaturedProducts() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24">
       <div className="container">
         <div className="flex items-end justify-between mb-12">
           <motion.div
@@ -17,7 +17,7 @@ export function FeaturedProducts() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="font-serif text-5xl md:text-6xl text-ink mb-2">
+            <h2 className="font-serif text-5xl md:text-6xl text-green mb-2">
               Featured Collection
             </h2>
             <p className="font-sans text-ink/60">
@@ -36,10 +36,10 @@ export function FeaturedProducts() {
           {featuredProducts.map((product, i) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -80 : 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
+              transition={{ duration: 0.75, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
               <ProductCard product={product} />
             </motion.div>

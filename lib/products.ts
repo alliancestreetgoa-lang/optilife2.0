@@ -6,6 +6,8 @@ export interface Product {
   rating: number
   badge?: 'BESTSELLER' | 'TRENDING'
   slug: string
+  /** Front-facing product photo (sourced from optilifewellbeing.co.uk). */
+  image: string
 }
 
 export const products: Product[] = [
@@ -17,6 +19,7 @@ export const products: Product[] = [
     price: 28.99,
     rating: 4.9,
     badge: 'BESTSELLER',
+    image: '/products/multivitamin.png',
   },
   {
     id: '2',
@@ -25,6 +28,7 @@ export const products: Product[] = [
     description: 'High-strength Rosehip extract for joint health and natural Vitamin C support.',
     price: 26.99,
     rating: 4.9,
+    image: '/products/rosehip.png',
   },
   {
     id: '3',
@@ -33,6 +37,7 @@ export const products: Product[] = [
     description: 'Powerful antioxidant and anti-inflammatory support with Curcumin.',
     price: 28.99,
     rating: 4.9,
+    image: '/products/turmeric.png',
   },
   {
     id: '4',
@@ -42,6 +47,7 @@ export const products: Product[] = [
     price: 29.99,
     rating: 4.9,
     badge: 'TRENDING',
+    image: '/products/ashwagandha.png',
   },
 ]
 

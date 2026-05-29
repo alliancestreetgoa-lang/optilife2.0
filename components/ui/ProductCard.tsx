@@ -1,16 +1,17 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Star, ShoppingCart } from 'lucide-react'
 import { Product } from '@/lib/products'
 import { Button } from './Button'
+import { Tilt } from '@/components/effects/Tilt'
 
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      className="relative bg-white rounded-2xl overflow-hidden shadow-sm border border-cream-dark group"
+    <Tilt
+      max={8}
+      scale={1.03}
+      className="glass-card relative rounded-2xl overflow-hidden group"
     >
       {product.badge && (
         <span className="absolute top-4 left-4 z-10 bg-gold text-white text-xs font-sans font-semibold tracking-widest uppercase px-3 py-1 rounded-full">
@@ -18,11 +19,15 @@ export function ProductCard({ product }: { product: Product }) {
         </span>
       )}
 
-      {/* Product image placeholder */}
-      <div className="h-64 bg-cream-dark flex items-center justify-center">
-        <div className="w-32 h-32 rounded-full bg-green/10 flex items-center justify-center">
-          <span className="font-serif text-green text-4xl italic">O</span>
-        </div>
+      {/* Product photo (transparent cutout floats on the glass) */}
+      <div className="relative h-72 overflow-hidden">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          sizes="(max-width: 768px) 100vw, 25vw"
+          className="object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-105"
+        />
       </div>
 
       <div className="p-6">
@@ -48,6 +53,6 @@ export function ProductCard({ product }: { product: Product }) {
           </Button>
         </div>
       </div>
-    </motion.div>
+    </Tilt>
   )
 }

@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 80rem; /* 1280px */
+  padding-inline: 1.5rem;
+}
+
 @theme {
   --color-green: #2C5F2E;
   --color-green-light: #3A7D3C;
@@ -11,19 +18,88 @@
   --color-cream: #FAFAF7;
   --color-cream-dark: #F0EFE8;
   --color-ink: #1C1C1A;
-  --font-serif: var(--font-dm-serif), Georgia, serif;
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
+  /* Colorful backdrop (fallback for mobile / reduced-motion / before Vanta
+     loads) — gives the frosted glass depth/color to refract. The animated
+     Vanta fog layer sits above this when active. */
   body {
-    @apply bg-cream text-ink font-sans antialiased;
+    @apply text-ink font-sans antialiased;
+    background:
+      radial-gradient(42rem 42rem at 10% 12%, rgba(58, 125, 60, 0.28), transparent 60%),
+      radial-gradient(38rem 38rem at 90% 8%, rgba(224, 172, 64, 0.26), transparent 60%),
+      radial-gradient(48rem 48rem at 80% 88%, rgba(44, 95, 46, 0.22), transparent 60%),
+      radial-gradient(40rem 40rem at 18% 92%, rgba(224, 172, 64, 0.18), transparent 60%),
+      linear-gradient(180deg, #FAFAF7, #F0EFE8);
+    background-attachment: fixed;
+  }
+  /* Soft cream veil over the animated Vanta fog so it stays a gentle pastel
+     wash — keeps the liquid-glass color hint while keeping text readable. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: rgba(250, 250, 247, 0.55);
+    pointer-events: none;
   }
   h1, h2, h3 {
     @apply font-serif;
+  }
+}
+
+@layer components {
+  /* Liquid glass surfaces */
+  .glass {
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px -8px rgba(28, 28, 26, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  }
+  .glass-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.66);
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 18px 50px -14px rgba(28, 28, 26, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  /* Specular top sheen for the liquid-glass highlight */
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 32%
+    );
+    pointer-events: none;
+  }
+  .glass-dark {
+    background: rgba(30, 66, 32, 0.6);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 18px 50px -14px rgba(0, 0, 0, 0.32),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+  .glass-btn {
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 6px 20px -6px rgba(28, 28, 26, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 }
 

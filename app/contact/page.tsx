@@ -39,11 +39,11 @@ export default function ContactPage() {
         subtitle="Have questions? We're here to help you on your wellness journey."
       />
 
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-5xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -44 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
@@ -73,7 +73,7 @@ export default function ContactPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 44 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
@@ -96,7 +96,7 @@ export default function ContactPage() {
                       type={field.type}
                       id={field.id}
                       name={field.id}
-                      className="w-full border border-cream-dark rounded-xl px-4 py-3 font-sans text-sm text-ink bg-cream focus:outline-none focus:border-green transition-colors"
+                      className="w-full border border-cream-dark rounded-xl px-4 py-3 font-sans text-sm text-ink bg-white/40 focus:outline-none focus:border-green transition-colors"
                     />
                   </div>
                 ))}
@@ -108,7 +108,7 @@ export default function ContactPage() {
                     id="message"
                     name="message"
                     rows={5}
-                    className="w-full border border-cream-dark rounded-xl px-4 py-3 font-sans text-sm text-ink bg-cream focus:outline-none focus:border-green transition-colors resize-none"
+                    className="w-full border border-cream-dark rounded-xl px-4 py-3 font-sans text-sm text-ink bg-white/40 focus:outline-none focus:border-green transition-colors resize-none"
                   />
                 </div>
                 <button

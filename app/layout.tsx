@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
-import { DM_Serif_Display, Inter } from 'next/font/google'
+import { Playfair_Display, DM_Sans } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { VantaBackground } from '@/components/effects/VantaBackground'
 
-const dmSerif = DM_Serif_Display({
+// Matches the original site: Playfair Display headings + DM Sans body.
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400'],
   style: ['normal', 'italic'],
-  variable: '--font-dm-serif',
+  variable: '--font-playfair',
   display: 'swap',
 })
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-dm-sans',
   display: 'swap',
 })
 
@@ -33,8 +34,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${dmSerif.variable} ${inter.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <body>
+        <VantaBackground />
         <Header />
         <main>{children}</main>
         <Footer />

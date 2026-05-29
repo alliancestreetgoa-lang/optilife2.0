@@ -12,7 +12,7 @@ interface PageHeroProps {
 export function PageHero({ label, title, subtitle, dark = false }: PageHeroProps) {
   return (
     <section
-      className={`pt-32 pb-20 ${dark ? 'bg-green text-white' : 'bg-cream text-ink'}`}
+      className={`pt-32 pb-20 ${dark ? 'bg-green/85 text-white' : 'text-ink'}`}
     >
       <div className="container text-center">
         {label && (
