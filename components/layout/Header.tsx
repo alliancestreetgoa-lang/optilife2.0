@@ -66,13 +66,13 @@ export function Header() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             href="/contact"
-            className="glass-btn bg-white/30 font-sans text-sm font-medium text-ink/80 hover:text-green px-5 py-2 rounded-lg transition-colors"
+            className="glass-btn bg-white/30 font-sans text-sm font-medium text-ink/80 hover:text-green px-5 py-2 rounded-lg transition-[color,transform] duration-200 ease-snappy active:scale-[0.97]"
           >
             Sign In
           </Link>
           <Link
             href="/shop"
-            className="glass-btn inline-flex items-center gap-2 font-sans text-sm font-medium text-white bg-green/80 hover:bg-green px-5 py-2 rounded-lg transition-colors"
+            className="glass-btn inline-flex items-center gap-2 font-sans text-sm font-medium text-white bg-green/80 hover:bg-green px-5 py-2 rounded-lg transition-[background-color,transform] duration-200 ease-snappy active:scale-[0.97]"
           >
             <ShoppingBag className="w-4 h-4" />
             Cart

@@ -18,6 +18,9 @@
   --color-cream: #FAFAF7;
   --color-cream-dark: #F0EFE8;
   --color-ink: #1C1C1A;
+  /* Strong custom easings — built-in curves are too weak (Emil Kowalski) */
+  --ease-snappy: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-fluid: cubic-bezier(0.77, 0, 0.175, 1);
   --font-serif: var(--font-playfair), Georgia, serif;
   --font-sans: var(--font-dm-sans), system-ui, sans-serif;
 }

@@ -26,7 +26,7 @@ export function ProductCard({ product }: { product: Product }) {
           alt={product.name}
           fill
           sizes="(max-width: 768px) 100vw, 25vw"
-          className="object-contain p-4 drop-shadow-[0_16px_28px_rgba(28,28,26,0.22)] transition-transform duration-500 ease-out group-hover:scale-105"
+          className="object-contain p-4 drop-shadow-[0_16px_28px_rgba(28,28,26,0.22)] transition-transform duration-[600ms] ease-snappy [@media(hover:hover)]:group-hover:scale-[1.07]"
         />
       </div>
 

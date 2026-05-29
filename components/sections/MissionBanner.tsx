@@ -22,7 +22,7 @@ export function MissionBanner() {
           </blockquote>
           <Link
             href="/about"
-            className="inline-block font-sans text-sm font-medium tracking-wide text-green bg-white hover:bg-cream px-8 py-3 rounded-lg transition-colors"
+            className="inline-block font-sans text-sm font-medium tracking-wide text-green bg-white hover:bg-cream px-8 py-3 rounded-lg transition-[background-color,transform] duration-200 ease-snappy active:scale-[0.97]"
           >
             Read Our Story
           </Link>

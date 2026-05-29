@@ -25,7 +25,7 @@ const motionProps = {
 }
 
 const baseClass =
-  'inline-flex items-center justify-center font-sans font-medium tracking-wide transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 disabled:opacity-50 cursor-pointer'
+  'inline-flex items-center justify-center font-sans font-medium tracking-wide transition-[background-color,box-shadow] duration-200 ease-snappy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 disabled:opacity-50 cursor-pointer'
 
 const variants = {
   primary: 'glass-btn bg-gold/80 text-white hover:bg-gold',
