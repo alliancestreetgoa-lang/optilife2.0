@@ -1,24 +1,49 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { Button } from '@/components/ui/Button'
 
-// WebGL 3D DNA — client-only (WebGL / window). Mouse-reactive on its own.
-const HeroScene = dynamic(() => import('@/components/three/HeroScene'), { ssr: false })
+const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
+// Floating product showcase — our actual supplements (on-brand hero visual).
+const heroProducts = [
+  { src: `${BP}/products/turmeric.png`, alt: 'Turmeric 400mg', cls: 'w-[24%] -rotate-[8deg] z-10', dur: 4.2, delay: 0.3 },
+  { src: `${BP}/products/multivitamin.png`, alt: 'Multivitamin & Minerals', cls: 'w-[32%] z-20 -mb-2', dur: 5, delay: 0 },
+  { src: `${BP}/products/ashwagandha.png`, alt: 'Ashwagandha 1300mg', cls: 'w-[24%] rotate-[8deg] z-10', dur: 4.6, delay: 0.5 },
+]
 
 export function Hero() {
   return (
     <section className="relative min-h-[100svh] flex items-start lg:items-center overflow-hidden">
-      {/* WebGL 3D DNA helix — right side */}
+      {/* Floating product showcase — right on desktop, lower band on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.4 }}
-        className="absolute z-[5] pointer-events-none inset-x-0 bottom-0 h-[42%] opacity-45 [mask-image:linear-gradient(to_bottom,transparent,#000_55%)] lg:inset-x-auto lg:bottom-auto lg:right-[1%] lg:top-1/2 lg:h-[92%] lg:w-[42%] lg:-translate-y-1/2 lg:opacity-100 lg:[mask-image:none]"
+        transition={{ duration: 1, delay: 0.3 }}
+        className="absolute z-[5] pointer-events-none flex items-end justify-center
+          inset-x-0 bottom-0 h-[34%] opacity-90 [mask-image:linear-gradient(to_bottom,transparent,#000_38%)]
+          lg:inset-x-auto lg:bottom-auto lg:right-[3%] lg:top-1/2 lg:h-auto lg:w-[44%] lg:-translate-y-1/2 lg:opacity-100 lg:[mask-image:none]"
         aria-hidden="true"
       >
-        <HeroScene />
+        {/* soft glow behind the bottles */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(58,125,60,0.18),transparent_65%)]" />
+        {heroProducts.map((p) => (
+          <motion.div
+            key={p.alt}
+            animate={{ y: [0, -14, 0] }}
+            transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: 'easeInOut' }}
+            className={`relative ${p.cls}`}
+          >
+            <Image
+              src={p.src}
+              alt={p.alt}
+              width={400}
+              height={533}
+              className="w-full h-auto drop-shadow-[0_20px_30px_rgba(28,28,26,0.25)]"
+            />
+          </motion.div>
+        ))}
       </motion.div>
 
       <div className="container relative z-10 pt-28 lg:pt-20">
