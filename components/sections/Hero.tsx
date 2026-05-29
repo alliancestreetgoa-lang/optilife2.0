@@ -5,9 +5,9 @@ import { Button } from '@/components/ui/Button'
 
 export function Hero() {
   return (
-    <section className="relative min-h-[100svh] flex items-start lg:items-center overflow-hidden">
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden">
 
-      <div className="container relative z-10 pt-28 lg:pt-20">
+      <div className="container relative z-10 pt-20">
         <div className="max-w-2xl">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
