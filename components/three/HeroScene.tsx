@@ -120,11 +120,11 @@ function DNA({ reduced }: { reduced: boolean }) {
         <mesh key={i}>
           <tubeGeometry args={[curve, 240, 0.16, 18, false]} />
           <meshStandardMaterial
-            color="#F4F6EE"
-            emissive="#FFFFFF"
-            emissiveIntensity={0.12}
-            roughness={0.25}
-            metalness={0.35}
+            color="#2C5F2E"
+            emissive="#2C5F2E"
+            emissiveIntensity={0.15}
+            roughness={0.28}
+            metalness={0.4}
           />
         </mesh>
       ))}
