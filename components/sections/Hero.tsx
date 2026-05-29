@@ -9,7 +9,7 @@ const HeroScene = dynamic(() => import('@/components/three/HeroScene'), { ssr: f
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[100svh] flex items-start lg:items-center overflow-hidden">
       {/* WebGL 3D DNA helix — right side */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -21,7 +21,7 @@ export function Hero() {
         <HeroScene />
       </motion.div>
 
-      <div className="container relative z-10 pt-20">
+      <div className="container relative z-10 pt-28 lg:pt-20">
         <div className="max-w-2xl">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
