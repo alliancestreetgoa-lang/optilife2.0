@@ -19,14 +19,16 @@ export function ProductCard({ product }: { product: Product }) {
         </span>
       )}
 
-      {/* Product photo (transparent cutout floats on the glass) */}
+      {/* Product photo — transparent cutout on a soft white "stage" so the
+          white bottle reads as solid against the glass (no hard rectangle). */}
       <div className="relative h-72 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(255,255,255,0.92),rgba(255,255,255,0)_68%)]" />
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="(max-width: 768px) 100vw, 25vw"
-          className="object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-105"
+          className="relative object-contain p-4 drop-shadow-[0_14px_28px_rgba(28,28,26,0.22)] transition-transform duration-500 ease-out group-hover:scale-105"
         />
       </div>
 
