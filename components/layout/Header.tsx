@@ -27,7 +27,7 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/optilife-logo.png"
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/optilife-logo.png`}
             alt="OptiLife Wellbeing"
             width={150}
             height={100}
