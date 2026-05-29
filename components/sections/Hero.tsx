@@ -15,7 +15,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, delay: 0.4 }}
-        className="hidden lg:block absolute right-[1%] top-1/2 -translate-y-1/2 w-[42%] h-[92%] z-[5]"
+        className="absolute z-[5] pointer-events-none inset-x-0 bottom-0 h-[40%] opacity-90 lg:inset-x-auto lg:bottom-auto lg:right-[1%] lg:top-1/2 lg:h-[92%] lg:w-[42%] lg:-translate-y-1/2 lg:opacity-100"
         aria-hidden="true"
       >
         <HeroScene />
