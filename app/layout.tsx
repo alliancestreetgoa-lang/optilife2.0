@@ -1,21 +1,28 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, DM_Sans } from 'next/font/google'
+import { Fraunces, Schibsted_Grotesk, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { VantaBackground } from '@/components/effects/VantaBackground'
 
-// Matches the original site: Playfair Display headings + DM Sans body.
-const playfair = Playfair_Display({
+// Apothecary Lab type system: Fraunces display serif (old-apothecary warmth)
+// + Schibsted Grotesk body + Geist Mono lab labels.
+const fraunces = Fraunces({
   subsets: ['latin'],
   style: ['normal', 'italic'],
-  variable: '--font-playfair',
+  variable: '--font-fraunces',
+  axes: ['opsz'],
   display: 'swap',
 })
 
-const dmSans = DM_Sans({
+const schibsted = Schibsted_Grotesk({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-schibsted',
+  display: 'swap',
+})
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
   display: 'swap',
 })
 
@@ -34,9 +41,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${schibsted.variable} ${geistMono.variable}`}
+    >
       <body>
-        <VantaBackground />
         <Header />
         <main>{children}</main>
         <Footer />

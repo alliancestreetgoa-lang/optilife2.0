@@ -1,47 +1,51 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { CornerMarks } from '@/components/ui/CornerMarks'
 
 interface PageHeroProps {
+  /** Mono eyebrow, e.g. "OUR STORY" or "SHOP · 4 PRODUCTS". */
   label?: string
   title: string
   subtitle: string
-  dark?: boolean
 }
 
-export function PageHero({ label, title, subtitle, dark = false }: PageHeroProps) {
+/**
+ * Compact clinical page header: mono eyebrow → display title → lede,
+ * on the faint-sage surface with a hairline bottom border.
+ */
+export function PageHero({ label, title, subtitle }: PageHeroProps) {
   return (
-    <section
-      className={`pt-32 pb-20 ${dark ? 'bg-green/85 text-white' : 'text-ink'}`}
-    >
-      <div className="container text-center">
+    <section className="relative border-b border-line bg-surface-alt py-16 md:py-24">
+      <div
+        aria-hidden
+        className="graph-paper absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_0%,transparent_75%)]"
+      />
+      <CornerMarks />
+      <div className="container relative max-w-3xl text-center">
         {label && (
-          <motion.span
+          <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className={`inline-block font-sans text-xs font-semibold tracking-[0.2em] uppercase px-4 py-2 rounded-full mb-6 ${
-              dark ? 'bg-white/10 text-gold' : 'bg-gold/15 text-gold'
-            }`}
+            className="eyebrow mb-4"
           >
             {label}
-          </motion.span>
+          </motion.p>
         )}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="font-serif text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight"
+          transition={{ duration: 0.5, delay: 0.08 }}
+          className="mb-5 text-4xl font-semibold md:text-5xl lg:text-[3.5rem] lg:leading-[1.08]"
         >
           {title}
         </motion.h1>
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className={`font-sans text-lg max-w-2xl mx-auto leading-relaxed ${
-            dark ? 'text-white/70' : 'text-ink/60'
-          }`}
+          transition={{ duration: 0.5, delay: 0.16 }}
+          className="mx-auto max-w-2xl text-base leading-relaxed text-ink-soft md:text-lg"
         >
           {subtitle}
         </motion.p>

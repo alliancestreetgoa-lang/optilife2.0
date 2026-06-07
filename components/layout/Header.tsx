@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
@@ -19,111 +19,127 @@ const navLinks = [
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/40 backdrop-blur-xl border-b border-white/30 shadow-sm">
-      <div className="container flex items-center justify-between h-16 lg:h-20">
-        {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <Image
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/optilife-logo.png`}
-            alt="OptiLife Wellbeing"
-            width={150}
-            height={100}
-            priority
-            className="h-11 w-auto lg:h-12"
-          />
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => {
-            const active = pathname === link.href
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'relative font-sans text-sm py-1 transition-colors duration-200',
-                  active ? 'text-green font-semibold' : 'text-ink/70 hover:text-green'
-                )}
-              >
-                {link.label}
-                {active && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute left-0 -bottom-0.5 h-0.5 w-full rounded-full bg-gold"
-                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  />
-                )}
-              </Link>
-            )
-          })}
-        </nav>
-
-        {/* Desktop actions */}
-        <div className="hidden lg:flex items-center gap-3">
-          <Link
-            href="/contact"
-            className="glass-btn bg-white/30 font-sans text-sm font-medium text-ink/80 hover:text-green px-5 py-2 rounded-lg transition-[color,transform] duration-200 ease-snappy active:scale-[0.97]"
-          >
-            Sign In
-          </Link>
-          <Link
-            href="/shop"
-            className="glass-btn inline-flex items-center gap-2 font-sans text-sm font-medium text-white bg-green/80 hover:bg-green px-5 py-2 rounded-lg transition-[background-color,transform] duration-200 ease-snappy active:scale-[0.97]"
-          >
-            <ShoppingBag className="w-4 h-4" />
-            Cart
-          </Link>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden p-2 text-ink"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+    <>
+      {/* Announcement bar — scrolls away, lab-label voice */}
+      <div className="bg-ink text-center font-mono text-[11px] uppercase tracking-[0.18em] text-white/90 py-2 px-4">
+        Free UK shipping over £30 · Third-party tested
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-cream-dark overflow-hidden"
-          >
-            <nav className="container py-4 flex flex-col gap-4">
-              {navLinks.map((link) => (
+      <header
+        className={cn(
+          'sticky top-0 z-50 border-b bg-white/90 backdrop-blur-md transition-[box-shadow,border-color] duration-300',
+          scrolled ? 'border-line shadow-[0_1px_12px_rgba(12,31,23,0.06)]' : 'border-transparent'
+        )}
+      >
+        <div className="container flex h-16 items-center justify-between lg:h-[4.5rem]">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/optilife-logo.png`}
+              alt="OptiLife Wellbeing"
+              width={150}
+              height={100}
+              priority
+              className="h-10 w-auto lg:h-11"
+            />
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="hidden items-center gap-7 lg:flex">
+            {navLinks.map((link) => {
+              const active = pathname === link.href
+              return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
                   className={cn(
-                    'font-sans text-base py-2 border-b border-cream-dark last:border-0',
-                    pathname === link.href ? 'text-green font-semibold' : 'text-ink/70'
+                    'relative py-1 text-sm transition-colors duration-200',
+                    active ? 'font-medium text-ink' : 'text-ink-soft hover:text-ink'
                   )}
                 >
                   {link.label}
+                  {active && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute -bottom-0.5 left-0 h-0.5 w-full rounded-full bg-primary"
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    />
+                  )}
                 </Link>
-              ))}
-              <Link
-                href="/shop"
-                onClick={() => setMenuOpen(false)}
-                className="inline-flex items-center justify-center gap-2 font-sans text-base font-medium text-white bg-green px-5 py-3 rounded-lg mt-2"
-              >
-                <ShoppingBag className="w-4 h-4" />
-                Cart
-              </Link>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+              )
+            })}
+          </nav>
+
+          {/* Desktop actions */}
+          <div className="hidden items-center gap-3 lg:flex">
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2 text-sm font-medium text-white transition-[background-color,transform] duration-200 ease-snappy hover:bg-primary-dark active:scale-[0.97]"
+            >
+              <ShoppingBag className="h-4 w-4" />
+              Shop
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="p-2 text-ink lg:hidden"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="overflow-hidden border-t border-line bg-white lg:hidden"
+            >
+              <nav className="container flex flex-col gap-1 py-4">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={cn(
+                      'border-b border-line py-3 text-base last:border-0',
+                      pathname === link.href
+                        ? 'font-medium text-primary'
+                        : 'text-ink-soft'
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <Link
+                  href="/shop"
+                  onClick={() => setMenuOpen(false)}
+                  className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-base font-medium text-white"
+                >
+                  <ShoppingBag className="h-4 w-4" />
+                  Shop
+                </Link>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+    </>
   )
 }

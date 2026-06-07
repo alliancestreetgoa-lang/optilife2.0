@@ -1,79 +1,63 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
-import { Tilt } from '@/components/effects/Tilt'
+import { Section } from '@/components/ui/Section'
+import { SectionHeading } from '@/components/ui/SectionHeading'
+import { Card } from '@/components/ui/Card'
+import { Reveal } from '@/components/ui/Reveal'
 
 const testimonials = [
   {
     quote:
       "I've never felt better since I started using Optilifewellbeing products. The quality is noticeably different from anything else on the market.",
     name: 'Sarah Mitchell',
-    label: 'Verified Customer',
   },
   {
     quote:
       'The Turmeric and Ashwagandha supplements have been a game changer for my energy levels. I recommend OptiLife to everyone in my family.',
     name: 'James Thornton',
-    label: 'Verified Customer',
   },
   {
     quote:
       'Outstanding customer service and products that actually work. My joint pain has reduced significantly after just 6 weeks of using the Rosehip 2000mg.',
     name: 'Emma Clarke',
-    label: 'Verified Customer',
   },
 ]
 
 export function Testimonials() {
   return (
-    <section className="py-24">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-serif text-5xl md:text-6xl text-green mb-4">
-            Stories from Our Community
-          </h2>
-          <div className="w-16 h-0.5 bg-gold mx-auto" />
-        </motion.div>
+    <Section>
+      <SectionHeading
+        eyebrow="Customer Stories"
+        title="Stories from our community"
+        lede="Real results from people who made OptiLife part of their daily routine."
+      />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={t.name}
-              initial={{ opacity: 0, scale: 0.78 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Tilt max={8} scale={1.02} className="glass-card rounded-2xl p-8 h-full">
-                <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 fill-gold text-gold" />
-                  ))}
-                </div>
-                <p className="font-sans text-ink/70 leading-relaxed mb-6 italic">
-                  &ldquo;{t.quote}&rdquo;
+      <div className="grid gap-6 md:grid-cols-3">
+        {testimonials.map((t, i) => (
+          <Reveal
+            key={t.name}
+            variant={i === 0 ? 'left' : i === 2 ? 'right' : 'up'}
+            delay={i * 0.08}
+            className="h-full"
+          >
+            <Card className="flex h-full flex-col p-8">
+              <div className="mb-5 flex gap-0.5">
+                {[...Array(5)].map((_, j) => (
+                  <Star key={j} className="h-4 w-4 fill-gold text-gold" />
+                ))}
+              </div>
+              <blockquote className="mb-6 text-sm leading-relaxed text-ink-soft">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+              <div className="mt-auto">
+                <p className="text-sm font-semibold text-ink">{t.name}</p>
+                <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-primary">
+                  Verified Buyer
                 </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-green/10 flex items-center justify-center font-serif text-green font-bold">
-                    {t.name[0]}
-                  </div>
-                  <div>
-                    <p className="font-sans text-sm font-semibold text-ink">{t.name}</p>
-                    <p className="font-sans text-xs text-ink/50">{t.label}</p>
-                  </div>
-                </div>
-              </Tilt>
-            </motion.div>
-          ))}
-        </div>
+              </div>
+            </Card>
+          </Reveal>
+        ))}
       </div>
-    </section>
+    </Section>
   )
 }

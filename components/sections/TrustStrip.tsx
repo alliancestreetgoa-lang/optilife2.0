@@ -1,37 +1,26 @@
-'use client'
+import { BadgeCheck, MapPin, Leaf, FlaskConical } from 'lucide-react'
 
-import { motion } from 'framer-motion'
-
-const signals = [
-  '100% Natural Ingredients',
-  'Lab Tested & Verified',
-  'UK-Based Company',
-  '30-Day Money Back Guarantee',
-  'Scientifically Formulated',
-  'Trusted by Thousands',
-  'Sourced from Organic Farms',
-  'No Artificial Fillers',
+const marks = [
+  { icon: BadgeCheck, label: 'GMP Certified' },
+  { icon: MapPin, label: 'Made in the UK' },
+  { icon: Leaf, label: 'Vegan Friendly' },
+  { icon: FlaskConical, label: 'Third-Party Tested' },
 ]
 
 export function TrustStrip() {
-  const doubled = [...signals, ...signals]
-
   return (
-    <div className="bg-green py-4 overflow-hidden">
-      <motion.div
-        animate={{ x: ['0%', '-50%'] }}
-        transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-        className="flex whitespace-nowrap"
-      >
-        {doubled.map((signal, i) => (
-          <span key={i} className="inline-flex items-center gap-6 mx-6">
-            <span className="font-sans text-sm font-medium text-white tracking-wide">
-              {signal}
-            </span>
-            <span className="text-gold text-xl">✦</span>
-          </span>
+    <section className="border-y border-line bg-surface">
+      <div className="container grid grid-cols-2 gap-x-6 gap-y-4 py-5 md:grid-cols-4">
+        {marks.map(({ icon: Icon, label }) => (
+          <div
+            key={label}
+            className="flex items-center justify-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft"
+          >
+            <Icon className="h-4 w-4 shrink-0 text-primary" />
+            {label}
+          </div>
         ))}
-      </motion.div>
-    </div>
+      </div>
+    </section>
   )
 }
