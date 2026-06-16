@@ -1,0 +1,9 @@
+# Netlify build config for the static Next.js export.
+# The site is served at the root domain here, so next.config.ts intentionally
+# omits basePath outside of GitHub Actions (which keeps the /optilife2.0 prefix).
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "24"
