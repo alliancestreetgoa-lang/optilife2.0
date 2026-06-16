@@ -1,6 +1,6 @@
 import type { Handler } from '@netlify/functions'
 import Stripe from 'stripe'
-import { buildLineItems, shippingOption, validateItems } from './checkout-core'
+import { buildLineItems, shippingOption, validateItems } from '../../lib/checkout-core'
 
 const handler: Handler = async (event) => {
   if (event.httpMethod !== 'POST') {

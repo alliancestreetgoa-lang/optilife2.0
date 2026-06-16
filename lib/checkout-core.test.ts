@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { buildLineItems, shippingOption, validateItems } from './checkout-core'
-import type { Product } from '../../lib/products'
+import type { Product } from './products'
 
 const catalog: Product[] = [
   { id: '1', price: 28.99, slug: 'a', name: 'A', description: '', rating: 5, image: '/a.png' },

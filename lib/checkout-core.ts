@@ -1,4 +1,4 @@
-import { products, type Product } from '../../lib/products'
+import { products, type Product } from './products'
 
 export interface IncomingItem {
   id: string
