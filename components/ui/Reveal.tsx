@@ -19,17 +19,17 @@ interface RevealProps {
 }
 
 const HIDDEN: Record<RevealVariant, Record<string, number>> = {
-  up: { opacity: 0, y: 24 },
-  down: { opacity: 0, y: -24 },
-  left: { opacity: 0, x: -32 },
-  right: { opacity: 0, x: 32 },
-  zoom: { opacity: 0, scale: 0.94 },
+  up: { opacity: 0, y: 64, scale: 0.97 },
+  down: { opacity: 0, y: -64, scale: 0.97 },
+  left: { opacity: 0, x: -80 },
+  right: { opacity: 0, x: 80 },
+  zoom: { opacity: 0, scale: 0.86 },
 }
 
 /**
- * Scroll-into-view reveal. Kept deliberately subtle — small offsets, one
- * shared easing — so direction adds variety without breaking the calm
- * clinical feel. Honors `prefers-reduced-motion` (fades only).
+ * Scroll-into-view reveal. Bolder travel with a gentle overshoot easing so
+ * elements arrive with momentum. One shared timing; `variant` sets the
+ * entrance direction. Honors `prefers-reduced-motion` (fades only).
  */
 export function Reveal({
   children,
@@ -46,7 +46,8 @@ export function Reveal({
       x: 0,
       y: 0,
       scale: 1,
-      transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] },
+      // Slightly springy ease-out — a hint of overshoot adds life.
+      transition: { duration: 0.8, delay, ease: [0.34, 1.3, 0.42, 1] },
     },
   }
 

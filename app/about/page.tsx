@@ -76,7 +76,7 @@ export default function AboutPage() {
           {values.map((value, i) => {
             const Icon = value.icon
             return (
-              <Reveal key={value.title} delay={i * 0.08} className="h-full">
+              <Reveal key={value.title} delay={i * 0.12} className="h-full">
                 <Card className="h-full p-8">
                   <span className="mb-5 inline-flex rounded-lg bg-primary-soft p-2.5">
                     <Icon className="h-5 w-5 text-primary" />

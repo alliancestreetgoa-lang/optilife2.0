@@ -90,7 +90,7 @@ export default function ExpertisePage() {
                   className="absolute left-6 top-16 bottom-2 w-px bg-line md:left-8"
                 />
               )}
-              <Reveal delay={i * 0.08}>
+              <Reveal delay={i * 0.12}>
                 <span className="absolute left-0 top-0 font-mono text-4xl font-medium text-primary md:text-5xl">
                   {step.index}
                 </span>
@@ -115,7 +115,7 @@ export default function ExpertisePage() {
           {standards.map((standard, i) => {
             const Icon = standard.icon
             return (
-              <Reveal key={standard.title} delay={i * 0.08} className="h-full">
+              <Reveal key={standard.title} delay={i * 0.12} className="h-full">
                 <Card className="flex h-full gap-5 p-8">
                   <span className="inline-flex h-fit shrink-0 rounded-lg bg-primary-soft p-2.5">
                     <Icon className="h-5 w-5 text-primary" />

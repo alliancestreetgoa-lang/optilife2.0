@@ -36,7 +36,7 @@ export function WhyChooseUs() {
 
       <div className="grid gap-6 md:grid-cols-3">
         {standards.map(({ icon: Icon, title, body, stat }, i) => (
-          <Reveal key={title} delay={i * 0.08} className="h-full">
+          <Reveal key={title} delay={i * 0.12} className="h-full">
             <Card className="flex h-full flex-col p-8">
               <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-soft">
                 <Icon className="h-6 w-6 text-primary" />

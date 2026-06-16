@@ -36,7 +36,7 @@ export function Testimonials() {
           <Reveal
             key={t.name}
             variant={i === 0 ? 'left' : i === 2 ? 'right' : 'up'}
-            delay={i * 0.08}
+            delay={i * 0.12}
             className="h-full"
           >
             <Card className="flex h-full flex-col p-8">

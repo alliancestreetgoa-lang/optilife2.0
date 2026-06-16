@@ -57,7 +57,7 @@ export default function ObjectivesPage() {
           {objectives.map((objective, i) => (
             <li key={objective.goal} className="border-b border-line">
               <Reveal
-                delay={i * 0.08}
+                delay={i * 0.12}
                 className="flex flex-col gap-2 py-8 md:flex-row md:items-baseline md:gap-10"
               >
                 <span className="font-mono text-sm text-primary md:w-12 md:shrink-0">

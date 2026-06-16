@@ -58,7 +58,7 @@ export function MissionBanner() {
 
       <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
         {stats.map((stat, i) => (
-          <Reveal key={stat.label} delay={i * 0.08} className="text-center">
+          <Reveal key={stat.label} delay={i * 0.12} className="text-center">
             <p className="mb-2 font-mono text-4xl text-white md:text-5xl">
               <Counter
                 value={stat.value}

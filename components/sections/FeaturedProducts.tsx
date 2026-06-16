@@ -16,7 +16,7 @@ export function FeaturedProducts() {
 
       <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2">
         {featuredProducts.map((product, i) => (
-          <Reveal key={product.id} variant="zoom" delay={i * 0.08} className="h-full">
+          <Reveal key={product.id} variant="zoom" delay={i * 0.12} className="h-full">
             <ProductCard product={product} />
           </Reveal>
         ))}
