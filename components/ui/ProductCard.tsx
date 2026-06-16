@@ -6,8 +6,10 @@ import { Product } from '@/lib/products'
 import { Badge } from './Badge'
 import { Card } from './Card'
 import { Button } from './Button'
+import { useCart } from '@/lib/cart'
 
 export function ProductCard({ product }: { product: Product }) {
+  const { addItem, openCart } = useCart()
   return (
     <Card className="group relative flex flex-col overflow-hidden">
       {product.badge && (
@@ -42,7 +44,14 @@ export function ProductCard({ product }: { product: Product }) {
           <span className="font-mono text-lg text-ink">
             £{product.price.toFixed(2)}
           </span>
-          <Button size="sm" className="gap-1.5">
+          <Button
+            size="sm"
+            className="gap-1.5"
+            onClick={() => {
+              addItem(product)
+              openCart()
+            }}
+          >
             <Plus className="h-4 w-4" />
             Add
           </Button>

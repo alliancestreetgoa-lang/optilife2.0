@@ -3,6 +3,8 @@ import { Fraunces, Schibsted_Grotesk, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { CartProvider } from '@/lib/cart'
+import { CartDrawer } from '@/components/cart/CartDrawer'
 
 // Apothecary Lab type system: Fraunces display serif (old-apothecary warmth)
 // + Schibsted Grotesk body + Geist Mono lab labels.
@@ -46,9 +48,12 @@ export default function RootLayout({
       className={`${fraunces.variable} ${schibsted.variable} ${geistMono.variable}`}
     >
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <CartProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   )
