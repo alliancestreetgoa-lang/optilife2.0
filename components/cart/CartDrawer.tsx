@@ -124,7 +124,7 @@ function CheckoutButton() {
   if (onGitHubPages) {
     return (
       <a
-        href="https://optilife2-0.netlify.app/shop/"
+        href="https://optilifewellbeing.co.uk/shop/"
         className="mt-4 block w-full rounded-lg border border-line py-3 text-center text-sm font-medium text-ink hover:border-primary"
       >
         Checkout on our main store →
