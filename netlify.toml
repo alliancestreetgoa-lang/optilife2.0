@@ -7,3 +7,9 @@
 
 [build.environment]
   NODE_VERSION = "24"
+
+# Serverless function that creates Stripe Checkout Sessions.
+# Requires STRIPE_SECRET_KEY (and optionally SITE_URL) set in the Netlify UI.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

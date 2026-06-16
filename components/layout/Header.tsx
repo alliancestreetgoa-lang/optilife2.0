@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ShoppingBag } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useCart } from '@/lib/cart'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -21,6 +22,7 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const { count, openCart } = useCart()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -83,6 +85,19 @@ export function Header() {
 
           {/* Desktop actions */}
           <div className="hidden items-center gap-3 lg:flex">
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label={`Open cart (${count} items)`}
+              className="relative p-2 text-ink transition-colors hover:text-primary"
+            >
+              <ShoppingBag className="h-5 w-5" />
+              {count > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 font-mono text-[10px] font-semibold text-white">
+                  {count}
+                </span>
+              )}
+            </button>
             <Link
               href="/shop"
               className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2 text-sm font-medium text-white transition-[background-color,transform] duration-200 ease-snappy hover:bg-primary-dark active:scale-[0.97]"
@@ -92,14 +107,29 @@ export function Header() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="p-2 text-ink lg:hidden"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* Mobile actions */}
+          <div className="flex items-center gap-1 lg:hidden">
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label={`Open cart (${count} items)`}
+              className="relative p-2 text-ink"
+            >
+              <ShoppingBag className="h-6 w-6" />
+              {count > 0 && (
+                <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 font-mono text-[10px] font-semibold text-white">
+                  {count}
+                </span>
+              )}
+            </button>
+            <button
+              className="p-2 text-ink"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
