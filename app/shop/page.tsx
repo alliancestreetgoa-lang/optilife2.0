@@ -29,11 +29,6 @@ export default function ShopPage() {
           ))}
         </div>
 
-        <Reveal delay={0.32} className="mt-16">
-          <p className="border-t border-line pt-8 text-center font-mono text-xs uppercase tracking-wider text-ink-soft">
-            Free UK shipping over £30 · 30-day returns · Third-party tested
-          </p>
-        </Reveal>
       </Section>
     </>
   )

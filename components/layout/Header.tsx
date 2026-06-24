@@ -33,11 +33,6 @@ export function Header() {
 
   return (
     <>
-      {/* Announcement bar — scrolls away, lab-label voice */}
-      <div className="bg-ink text-center font-mono text-[11px] uppercase tracking-[0.18em] text-white/90 py-2 px-4">
-        Free UK shipping over £30 · Third-party tested
-      </div>
-
       <header
         className={cn(
           'sticky top-0 z-50 border-b bg-white/90 backdrop-blur-md transition-[box-shadow,border-color] duration-300',
